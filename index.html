@@ -6,6 +6,41 @@
     <title>Watched Netflix Series Reviews</title>
     <style>
         
+/* Outdated Warning Modal - Red Theme */
+#asite-mod { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0); backdrop-filter: blur(4px); 
+    display: flex; align-items: center; justify-content: center; 
+    z-index: 99999; pointer-events: none; opacity: 0; 
+    transition: all 0.4s ease; font-family: 'Poppins', sans-serif; 
+}
+
+#asite-mod.nav-ds-show { 
+    background: rgba(0, 0, 0, 0.85); pointer-events: auto; opacity: 1; 
+}
+
+.asite-card { 
+    background: #1c1c1e; border: 1px solid #ff3030; 
+    padding: 32px; border-radius: 28px; width: 340px; text-align: center; 
+    transform: scale(0.85); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    box-shadow: 0 10px 30px rgba(255, 48, 48, 0.2);
+}
+
+#asite-mod.nav-ds-show .asite-card { transform: scale(1); }
+
+.asite-ttl { color: #ff3030; margin-bottom: 12px; font-weight: 600; font-size: 22px; }
+
+.asite-txt { color: #a1a1aa; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+
+.asite-btn { 
+    width: 100%; padding: 14px; border-radius: 12px; border: none; 
+    cursor: pointer; font-weight: 600; transition: all 0.2s;
+    background: #ff3030; color: #fff; font-size: 16px;
+}
+
+.asite-btn:hover { background: #cc0000; transform: translateY(-2px); }
+
+
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -1070,6 +1105,40 @@ I will focus to finish all past drama atm
         </footer>
     </div>
 
+
+
+
+
+<div class="asite-ovl" id="asite-mod">
+    <div class="asite-card">
+        <h3 class="asite-ttl">Outdated Page!</h3>
+        <p class="asite-txt">
+            This page is outdated and won't be updated. Some images and data might be inaccurate or missing.
+        </p>
+        <div class="asite-btns">
+            <button class="asite-btn" onclick="asiteExit()">Alright</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Show modal on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('asite-mod');
+        // Small delay to ensure smooth entry
+        setTimeout(() => {
+            modal.classList.add('nav-ds-show');
+        }, 300);
+    });
+
+    // Function to close the modal
+    function asiteExit() {
+        const modal = document.getElementById('asite-mod');
+        modal.classList.remove('nav-ds-show');
+    }
+</script>
+
     <script>
         const showReviewButton = document.getElementById('show-review');
         const sections = document.getElementsByClassName('section');
@@ -1158,5 +1227,4 @@ I will focus to finish all past drama atm
     
 </body>
 </html>
-
 
